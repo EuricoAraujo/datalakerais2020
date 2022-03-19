@@ -7,6 +7,6 @@ resource "aws_glue_crawler" "glue_crawler" {
     path = "s3://datalake-eurico-atv1/prata/"
   }
 
-  tags = local.common_tags
+
 
 }
