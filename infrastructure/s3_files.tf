@@ -1,7 +1,6 @@
 resource "aws_s3_bucket_object" "etl" {
   bucket = aws_s3_bucket.datalake.id
   key = "emr-code/pyspark/etl.py"
-  acl = "private"
   source = "../etl/etl.py"
   etag = filemd5("../etl/etl.py")
 }
@@ -9,7 +8,6 @@ resource "aws_s3_bucket_object" "etl" {
 resource "aws_s3_bucket_object" "lambda" {
   bucket = aws_s3_bucket.datalake.id
   key = "emr-code/lambdafunctions/lambda_function.py"
-  acl = "private"
   source ="../etl/lambda_function.py"
   etag = filemd5("../etl/lambda_function.py")
 }
