@@ -73,7 +73,7 @@
 #  policy_arn = aws_iam_policy.lambda.arn
 #}
 
-resource "aws_iam_role" "glue_role" {
+resource "aws_iam_role" "glue_role_rais" {
   name = "igti_rais_processing_crawler"
 
   assume_role_policy = <<EOF
@@ -100,8 +100,8 @@ EOF
 }
 
 
-resource "aws_iam_policy" "glue_policy" {
-  name        = "IGTIAWSGlueServiceRole"
+resource "aws_iam_policy" "glue_policy_rais" {
+  name        = "glue_policy_rais"
   path        = "/"
   description = "Policy for AWS Glue service role which allows access to related services including EC2, S3, and Cloudwatch Logs"
 
@@ -191,6 +191,6 @@ EOF
 
 
 resource "aws_iam_role_policy_attachment" "glue_attach" {
-  role       = aws_iam_role.glue_role.name
-  policy_arn = aws_iam_policy.glue_policy.arn
+  role       = aws_iam_role.glue_role_rais.name
+  policy_arn = aws_iam_policy.glue_policy_rais.arn
 }
