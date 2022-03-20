@@ -1,6 +1,6 @@
-#resource "aws_iam_role" "lambda" {
+resource "aws_iam_role" "lambda" {
 #  name = "IGTILambdaRole"
-#
+
 #  assume_role_policy = <<EOF
 #{
 #  "Version": "2012-10-17",
@@ -22,7 +22,7 @@
 #    CURSO = "EDC"
 #  }
 #
-#}
+}
 #
 #resource "aws_iam_policy" "lambda" {
 #  name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
