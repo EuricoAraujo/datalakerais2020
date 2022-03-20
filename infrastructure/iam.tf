@@ -1,5 +1,5 @@
-resource "aws_iam_role" "lambda" {
-#  name = "IGTILambdaRole"
+resource "aws_iam_role" "lambda2" {
+  name = "lambda2"
 
   assume_role_policy = <<EOF
 {
@@ -23,55 +23,55 @@ EOF
   }
 
 }
-#
-#resource "aws_iam_policy" "lambda" {
-#  name        = "IGTIAWSLambdaBasicExecutionRolePolicy"
-#  path        = "/"
-#  description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR Steps"
-#
-#  policy = <<EOF
-#{
-#    "Version": "2012-10-17",
-#    "Statement": [
-#        {
-#            "Effect": "Allow",
-#            "Action": [
-#                "logs:CreateLogGroup",
-#                "logs:CreateLogStream",
-#                "logs:PutLogEvents"
-#            ],
-#            "Resource": "*"
-#        },
-#        {
-#            "Effect": "Allow",
-#            "Action": [
-#                "s3:*"
-#            ],
-#            "Resource": "*"
-#        },
-#        {
-#            "Effect": "Allow",
-#            "Action": [
-#                "elasticmapreduce:*"
-#            ],
-#            "Resource": "*"
-#        },
-#        {
-#          "Action": "iam:PassRole",
-#          "Resource": ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
-#                       "arn:aws:iam::127012818163:role/EMR_EC2_DefaultRole"],
-#          "Effect": "Allow"
-#        }
-#    ]
-#}
-#EOF
-#}
-#
 
-#resource "aws_iam_role_policy_attachment" "lambda_attach" {
-#  role       = aws_iam_role.lambda.name
-#  policy_arn = aws_iam_policy.lambda.arn
-#}
+resource "aws_iam_policy" "lambda2" {
+  name        = "policylambda2"
+  path        = "/"
+  description = "Provides write permissions to CloudWatch Logs, S3 buckets and EMR Steps"
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elasticmapreduce:*"
+            ],
+            "Resource": "*"
+        },
+        {
+          "Action": "iam:PassRole",
+          "Resource": ["arn:aws:iam::360432246556:role/EMR_DefaultRole",
+                       "arn:aws:iam::360432246556:role/EMR_EC2_DefaultRole"],
+          "Effect": "Allow"
+        }
+    ]
+}
+EOF
+}
+
+
+resource "aws_iam_role_policy_attachment" "lambda_attach" {
+  role       = aws_iam_role.lambda2.name
+  policy_arn = aws_iam_policy.lambda2.arn
+}
 
 resource "aws_iam_role" "glue_role_rais" {
   name = "igti_rais_processing_crawler"
