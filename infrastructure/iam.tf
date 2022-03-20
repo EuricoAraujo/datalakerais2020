@@ -43,6 +43,15 @@ resource "aws_iam_policy" "lambda2" {
             "Resource": "*"
         },
         {
+             "Effect": "Allow",
+             "Action": [
+                "iam:CreateServiceLinkedRole",
+                "iam:PutRolePolicy"
+            ],
+            "Resource": "arn:aws:iam::*:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS*",
+            "Condition": {"StringLike": {"iam:AWSServiceName": "ecs.amazonaws.com"}}            
+        },
+        {
             "Effect": "Allow",
             "Action": [
                 "s3:*"
